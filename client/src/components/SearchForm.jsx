@@ -1,13 +1,16 @@
 import React,{useContext} from "react"
 import { DataContext } from "./DogBreedContext"
+import DogCard from "./DogCard"
+import DogCardClicked from "./DogCardClicked"
+import DogDataCard from "./DogDataCard"
 
 export default function SearchForm(){
 
-    const {searchBreed, handleSubmit, handleChange} = useContext(DataContext)
+    const {searchBreed, handleSubmit, handleChange, dogBreed, cardToggle, toggle, breedData} = useContext(DataContext)
 
     return(
         <div id="searchBreed" className=" bg-gray-200 mx-12 ">
-            <form onSubmit={handleSubmit} className="bg-gray-100 flex items-center px-24 py-24">            
+            <form onSubmit={handleSubmit} className="bg-gray-100 flex items-center px-24 py-24  z-50">            
                 <label className="sr-only">Search</label>
                 <div className="relative w-full">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -28,6 +31,45 @@ export default function SearchForm(){
                         <span className="sr-only">Search</span>
                     </button>
                 </form>
+                
+                <div className="grid grid-cols-3 gap-4 ">
+                    {dogBreed.map(breed => 
+                        <div className="col-start-2 col-end-3">
+                            <DogCard
+                                {...breed}
+                                cardToggle = {cardToggle}
+                            />
+                        </div>
+                    )}
+
+                    
+                        {toggle &&
+                        <>
+                            {dogBreed.map(breed => 
+                            <div className="col-start-3 col-end-4">
+                                <DogCardClicked
+                                    {...breed}/>
+                            </div>     
+                                )}
+                                    </>
+                                    }
+
+                                {toggle &&
+                                <>
+                                <div className="col-start-1 row-start-1 ">
+                                    <DogDataCard
+                                        {...breedData}
+                                        {...dogBreed}
+                                    />
+                                </div>
+                                </>
+                                }
+
+
+
+
+
+                </div>
         </div>
 
     )

@@ -1,5 +1,5 @@
 import React, {useEffect, useState, createContext } from 'react'
-import axios from "axios"
+import axios from 'axios'
 import '../css/App.css'
 
 
@@ -13,6 +13,7 @@ export default function DogBreedProvider(props) {
     const [dogBreed, setDogBreed] = useState([])
     const [favoriteDogBreed, setFavoriteDogBreed] = useState([])
     const [breedData, setBreedData] = useState([])
+    const [toggle, setToggle] = useState(false)
     
     function handleChange (e){
       const {name, value} = e.target
@@ -23,34 +24,36 @@ export default function DogBreedProvider(props) {
         }
       })
     }
-   
-    const apiBreedData = {
-      method: 'GET',
-      url: 'https://dog-breeds2.p.rapidapi.com/dog_breeds',
-      headers: {
-        'X-RapidAPI-Key': 'c07807c78emsh2a199158940a00cp15690cjsn0434460128cf',
-        'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
-      }
-    };
-    const apiDogBreed = {
-      method: 'GET',
-      url: `https://dogs-by-api-ninjas.p.rapidapi.com/v1/dogs?name=${searchBreed}`,
-      params: {
-        name: 'golden retriever'
-      },
-      headers: {
-        'X-RapidAPI-Key': 'c07807c78emsh2a199158940a00cp15690cjsn0434460128cf',
-        'X-RapidAPI-Host': 'dogs-by-api-ninjas.p.rapidapi.com'
-      }
-    };
-
+    function cardToggle(){
+      setToggle(prevToggle => !prevToggle)
+    }
     const getBreedData = () => {
-       axios.request(apiBreedData)
+       axios.request({
+        method: 'GET',
+        url: 'https://dog-breeds2.p.rapidapi.com/dog_breeds',
+        headers: {
+          'X-RapidAPI-Key': 'c07807c78emsh2a199158940a00cp15690cjsn0434460128cf',
+          'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
+        }
+      })
       .then(res => setBreedData(res.data))
       .catch(err => console.log(err))  
     }
-    function handleSubmit(){
-      axios.get(apiDogBreed)
+    
+    function handleSubmit(e){
+      e.preventDefault()
+      axios({
+        method: 'GET',
+        url: `https://dogs-by-api-ninjas.p.rapidapi.com/v1/dogs`,
+        params: {
+          name:`${searchBreed.name}`
+        },
+        headers: {
+          'X-RapidAPI-Key': 'c07807c78emsh2a199158940a00cp15690cjsn0434460128cf',
+          'X-RapidAPI-Host': 'dogs-by-api-ninjas.p.rapidapi.com'
+        }
+      })
+      // .then(res => console.log(res.data))
       .then(res => setDogBreed(res.data))
       .catch(err => console.log(err))
     }
@@ -69,12 +72,12 @@ export default function DogBreedProvider(props) {
   }
  
   
-  useEffect(() => {
-    // getBreedData()
-    getFavoriteBreed()
-    // getDogBreedData()
-    console.log("Test Effect")
-  }, [])
+  // useEffect(() => {
+  //   // getBreedData()
+  //   getFavoriteBreed()
+  //   // getDogBreedData()
+  //   console.log("Test Effect")
+  // }, [])
  
   return (
     <DataContext.Provider 
@@ -85,6 +88,9 @@ export default function DogBreedProvider(props) {
       searchBreed,
       dogBreed,
       favoriteDogBreed,
+      breedData,
+      cardToggle,
+      toggle,
       breedData
     }}>
           {props.children}
