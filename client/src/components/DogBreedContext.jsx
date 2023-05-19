@@ -1,4 +1,4 @@
-import React, {useEffect, useState, createContext } from 'react'
+import React, {useState, createContext } from 'react'
 import axios from 'axios'
 import '../css/App.css'
 
@@ -30,7 +30,7 @@ export default function DogBreedProvider(props) {
     const getBreedData = () => {
        axios.request({
         method: 'GET',
-        url: 'https://dog-breeds2.p.rapidapi.com/dog_breeds',
+        url: `https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${searchBreed}`,
         headers: {
           'X-RapidAPI-Key': 'c07807c78emsh2a199158940a00cp15690cjsn0434460128cf',
           'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
@@ -39,7 +39,9 @@ export default function DogBreedProvider(props) {
       .then(res => setBreedData(res.data))
       .catch(err => console.log(err))  
     }
-    
+    // const key = process.env.X-RAPIDAPI-KEY
+    // const host = process.env.X-RAPIDAPI-HOST
+
     function handleSubmit(e){
       e.preventDefault()
       axios({
@@ -53,10 +55,10 @@ export default function DogBreedProvider(props) {
           'X-RapidAPI-Host': 'dogs-by-api-ninjas.p.rapidapi.com'
         }
       })
-      // .then(res => console.log(res.data))
       .then(res => setDogBreed(res.data))
       .catch(err => console.log(err))
     }
+    console.log(breedData)
 
     function getFavoriteBreed(){
       axios.get("/api/dogBreed")
@@ -70,15 +72,7 @@ export default function DogBreedProvider(props) {
     })
     .catch(err => console.log(err))
   }
- 
-  
-  // useEffect(() => {
-  //   // getBreedData()
-  //   getFavoriteBreed()
-  //   // getDogBreedData()
-  //   console.log("Test Effect")
-  // }, [])
- 
+
   return (
     <DataContext.Provider 
     value = {{ 
@@ -91,7 +85,6 @@ export default function DogBreedProvider(props) {
       breedData,
       cardToggle,
       toggle,
-      breedData
     }}>
           {props.children}
     </DataContext.Provider>

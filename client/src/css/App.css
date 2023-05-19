@@ -2,47 +2,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- /* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  display:grid;
-  grid-template-rows:repeat(4, minmax(0, 1fr));
-  gap: 1rem
-} */
 
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 500px){
+  #bigNavbar{
+    display:none;
   }
-  to {
-    transform: rotate(360deg);
+  #dogName{
+    font-size: x-large;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  #favoriteBreed{
+   
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+  #homePage{
+    padding:0;
+  }
+  #searchBreed{
+  padding-left: 0;
+  padding-right: 0;
+  }
+  #searchGrid{
+   display:contents;
+  
+    
+  }
+  #card2{
+    padding: 1rem;
+
+  }
+  #card3{
+    padding:1rem;
+  }
+ 
+  #searchForm{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  #favorites{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+ @media only screen and (min-width: 501px) and (max-width:850px){
+  
+  #bigNavbar{
+    display:none;
+  }
+  #favoriteBreed{
+   
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #homePage{
+    padding:0;
+  }
+  #searchBreed{
+  padding-left: 0;
+  padding-right: 0;
+  }
+  #searchGrid{
+    display:contents
+  
+  }
+  #favorites{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #card2{
+    padding: 1rem;
+
+  }
+  #card3{
+    padding:1rem;
+  }
+} 
+@media only screen and (min-width:850px){
+  #mobile{
+    display:none
+  }
+
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */ 
