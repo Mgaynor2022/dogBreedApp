@@ -12,7 +12,7 @@ export default function DogDataCard(props){
             <h1 className="mb-2 text-3xl tracking-tight text-gray-900 text-center"> 
             Click If You Want To Learn More About {name} Dog Breed !</h1>
         </div>
-        <a href={`https://en.wikipedia.org/wiki/${name} dog`} rel="noopener noreferrer nofollow" target='_blank'>
+        <a href={`https://en.wikipedia.org/wiki/${name}`} rel="noopener noreferrer nofollow" target='_blank'>
             <FiExternalLink size='3rem' />
         </a>
     </div>
