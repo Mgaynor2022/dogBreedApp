@@ -3,6 +3,9 @@ const Schema = mongoose.Schema
 
 const dogsDataScheme = new Schema (
     {
+        // test:String
+        serverDogsData:[
+            {
         breed:String,
         origin:String,
         url:String,
@@ -10,7 +13,8 @@ const dogsDataScheme = new Schema (
             color:String,
             notes:String
         }
-    }
+    }]
+}
 
 )
 

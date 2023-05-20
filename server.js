@@ -4,44 +4,35 @@ const morgan = require("morgan")
 const mongoose = require("mongoose")
 const cors = require("cors")
 require("dotenv").config()
-// const fetch = require('node-fetch');
+const path = require("path")
 
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.json({limit: '50mb'}));
+// app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+//Middleware
 app.use(express.json())
 app.use(morgan("dev"))
-
 app.use(cors({
   origin: true
 }))
+//Deploying App
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
-// app.use(cors());
-// const corsOptions = {
-//     origin: "http://localhost:3500"
-// };
-
-// const requestEndpoint = "https://api.api-ninjas.com/v1/dogs?name=bulldog";
-
-// app.get('/getData', cors(corsOptions), async (req, res) => {
-//     const fetchOptions = {
-//         method: 'GET'
-//     }
-//     const response = await fetch(requestEndpoint, fetchOptions);
-//     const jsonResponse = await response.json();
-//     res.json(jsonResponse);
-// });
-
-
-
-
-// app.use("/favorites", require("./routes/FavoritePage.jsx"))
+//Routes
 app.use("/api/dogBreed", require("./routes/dogBreedPage.jsx"))
 app.use("/api/dogData", require("./routes/dogsDataPage.jsx"))
-// app.use("/PetDataPage", require("./routes/PetDataPage.jsx"))
+
 
 
 app.use((err,req,res,next) => {
     console.log(err)
     return res.send({errMsg:err.message})
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  });
 
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URI)
