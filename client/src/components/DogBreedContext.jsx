@@ -27,20 +27,26 @@ export default function DogBreedProvider(props) {
     function cardToggle(){
       setToggle(prevToggle => !prevToggle)
     }
-    const getBreedData = () => {
-       axios.request({
-        method: 'GET',
-        url: `https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${searchBreed}`,
-        headers: {
-          'X-RapidAPI-Key': 'c07807c78emsh2a199158940a00cp15690cjsn0434460128cf',
-          'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
-        }
-      })
-      .then(res => setBreedData(res.data))
-      .catch(err => console.log(err))  
-    }
+    // const getBreedData = () => {
+    //    axios.request({
+    //     method: 'GET',
+    //     url: `https://dog-breeds2.p.rapidapi.com/dog_breeds/breed/${searchBreed}`,
+    //     headers: {
+    //       'X-RapidAPI-Key': 'c07807c78emsh2a199158940a00cp15690cjsn0434460128cf',
+    //       'X-RapidAPI-Host': 'dog-breeds2.p.rapidapi.com'
+    //     }
+    //   })
+    //   .then(res => setBreedData(res.data))
+    //   .catch(err => console.log(err))  
+    // }
     // const key = process.env.X-RAPIDAPI-KEY
     // const host = process.env.X-RAPIDAPI-HOST
+
+    function resetSearch(){
+      setSearchBreed({
+        name:""
+      })
+    }
 
     function handleSubmit(e){
       e.preventDefault()
@@ -57,6 +63,7 @@ export default function DogBreedProvider(props) {
       })
       .then(res => setDogBreed(res.data))
       .catch(err => console.log(err))
+      resetSearch()
     }
     console.log(breedData)
 
