@@ -16,7 +16,6 @@ export default function SearchForm(){
                     <h2 className=" font-sans font-thin text-lg md:text-2xl mb-8 ">
                     Come Search For The Best Dog Breed The World Has To Offer !!</h2>
             <form id="searchForm" onSubmit={handleSubmit} className="bg-gray-100 flex items-center px-24 py-8 z-50">            
-                <label className="sr-only">Search</label>
                 <div className="relative w-full ">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <BsSearch />
@@ -35,6 +34,9 @@ export default function SearchForm(){
                         <BsSearch />
                     </button>
                 </form>
+                <p className=" font-sans font-thin text-md m-5">
+                    Each attribute is measured on a scale of values from 1-5.</p>
+                    <p className=" font-sans font-thin text-md ">1 being the worst and 5 being the best.</p>
                     </div>
                     
                 
