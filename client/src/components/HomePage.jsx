@@ -8,7 +8,7 @@ export default function HomePage(){
 
     return(
         
-     <div id='homePage' className="font-sans font-thin px-12 bg-gray-200">
+     <div id='homePage' className=" px-12 bg-gray-200">
 			<div className="w-full h-screen relative flex items-center">
 				<img id='homePicture' src="https://images.unsplash.com/photo-1583336663277-620dc1996580?w=1800"
 				 className="absolute top-0 left-0 w-full h-full object-cover" />

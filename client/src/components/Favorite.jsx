@@ -23,7 +23,7 @@ export default function FavoriteDisplay(){
     return (
         <div id='favorites'className= 'p-12 bg-gray-200'>
                 <div className="bg-gray-100 py-24 px-12 text-center ">
-                    <h2 className=" font-sans font-thin text-lg md:text-2xl mb-8 ">
+                    <h2 className=" text-lg md:text-2xl mb-8 ">
                     Here are 20 of the worlds favorite Dog Breeds !!</h2>
                 <button onClick={favoriteToggle}
                 className="p-2.5 m-8 bg-gray-200 rounded-lg border border-black hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-700">

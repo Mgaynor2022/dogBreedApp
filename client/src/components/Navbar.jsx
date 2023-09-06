@@ -21,13 +21,13 @@ export default function Navbar(){
                 <GiJumpingDog className='ml-5' size='2.5rem' />
             </div>
 					<ul className = "flex uppercase text-sm ml-8">
-						<li className="ml-8 text-gray-600 transition delay-75 hover:underline hover:decoration-4 hover:underline-offset-8">
+						<li className="ml-8 text-gray-800 transition delay-75  hover:underline hover:decoration-4 hover:underline-offset-8">
 							<Link to='#homePage' smooth>Home</Link>
 						</li>
-						<li className="ml-8 text-gray-600 transition hover:underline hover:decoration-4 hover:underline-offset-8">
+						<li className="ml-8 text-gray-800 transition hover:underline hover:decoration-4 hover:underline-offset-8">
 							<Link to="#searchBreed" smooth>Search</Link>
 						</li>
-						<li className="ml-8 text-gray-600 transition hover:underline hover:decoration-4 hover:underline-offset-8">
+						<li className="ml-8 text-gray-800 transition hover:underline hover:decoration-4 hover:underline-offset-8">
 							<Link to="#favorites" smooth>Favorites</Link>
 						</li>
 
@@ -40,18 +40,18 @@ export default function Navbar(){
                         <h1 className="font-bold text-xl tracking-wider">dogBreed App</h1>
                         <GiJumpingDog className='ml-5' size='2.5rem' />
                     </div>
-                    <RxHamburgerMenu className=' cursor-pointer mr-2 text-gray-600' onClick={toggleMobile} size='2em'  />
+                    <RxHamburgerMenu className=' cursor-pointer mr-2 text-gray-800' onClick={toggleMobile} size='2em'  />
                 </div>
 
                 <div className={navbar ? "flex justify-center tracking-wide w-full z-50 bg-gray-200" : "hidden"} id="navbar-hamburger">
                     <ul id='mobileNavbar' className = "flex flex-col uppercase text-lg text-center ml-8 pt-10">
-                                <li className="ml-8 text-gray-600 transition delay-75 hover:underline hover:decoration-4 hover:underline-offset-8">
+                                <li className="ml-8 text-gray-800 transition delay-75 hover:underline hover:decoration-4 hover:underline-offset-8">
                                     <Link to='#homePage' smooth>Home</Link>
                                 </li>
-                                <li className="ml-8 text-gray-600 transition hover:underline hover:decoration-4 hover:underline-offset-8">
+                                <li className="ml-8 text-gray-800 transition hover:underline hover:decoration-4 hover:underline-offset-8">
                                     <Link to="#searchBreed" smooth>Search</Link>
                                 </li>
-                                <li className="ml-8 text-gray-600 transition hover:underline hover:decoration-4 hover:underline-offset-8">
+                                <li className="ml-8 text-gray-800 transition hover:underline hover:decoration-4 hover:underline-offset-8">
                                     <Link to="#favorites" smooth>Favorites</Link>
                                 </li>
                             </ul>
